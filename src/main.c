@@ -83,29 +83,29 @@ int calc_parameter_to(char argument[])
     return parameter_to;
 }
 
-int check_input_parameters(int parameter_count, char *parameter[])
+int check_input_arguments(int arguments_count, char *arguments[])
 {
-    if(parameter_count < 1)
+    if(arguments_count < 1)
         return -1;
-    else if(parameter_count > 2)
+    if(arguments_count > 2)
         return -2;
-    if(parameter_count == 1)
-        if(!is_first_parameter(parameter[1]) && !is_second_parameter(parameter[1]))
+    if(arguments_count == 1)
+        if(!is_first_parameter(arguments[1]) && !is_second_parameter(arguments[1]))
             return -4;
-    if(parameter_count == 2)
+    if(arguments_count == 2)
     {
-        if(!is_first_parameter(parameter[1]) && !is_second_parameter(parameter[2]))
-            if (!is_first_parameter(parameter[2]) && !is_second_parameter(parameter[1]))
+        if(!is_first_parameter(arguments[1]) && !is_second_parameter(arguments[2]))
+            if(!is_first_parameter(arguments[2]) && !is_second_parameter(arguments[1]))
                 return -4;
-        if(is_first_parameter(parameter[1]) && is_first_parameter(parameter[2]))
+        if(is_first_parameter(arguments[1]) && is_first_parameter(arguments[2]))
             return -3;
-        if(is_second_parameter(parameter[1]) && is_second_parameter(parameter[2]))
+        if(is_second_parameter(arguments[1]) && is_second_parameter(arguments[2]))
             return -3;
     }
     return 1;
 }
 
-void calc_parameters(int argument_count, char *arguments[], struct parameters *parameter)
+void calc_parameters(int arguments_count, char *arguments[], struct parameters *parameter)
 {
     parameter->exist_from = 0;
     parameter->exist_to = 0;
@@ -119,7 +119,7 @@ void calc_parameters(int argument_count, char *arguments[], struct parameters *p
         parameter->to = calc_parameter_to(arguments[1]);
         parameter->exist_to = 1;
     }
-    if(argument_count == 2)
+    if(arguments_count == 2)
     {
         if(is_first_parameter(arguments[2]))
         {
@@ -169,8 +169,9 @@ int main(int argc, char *argv[])
 {
     struct parameters parameter;
     int starting_array[MAX_ARRAY_LENGTH], sorted_array[MAX_ARRAY_LENGTH], array_length;
-    int exit_code = check_input_parameters(argc - 1, argv);
-    if(exit_code < 0) return exit_code;
+    int exit_code = check_input_arguments(argc - 1, argv);
+    if(exit_code < 0)
+        return exit_code;
     calc_parameters(argc - 1, (char **) argv, &parameter);
     input_array((int *) starting_array, &array_length, parameter);
     copy_array(starting_array, sorted_array, array_length);
