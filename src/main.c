@@ -41,7 +41,7 @@ int compare_arrays(const int first_array[], const int second_array[], int array_
 
 bool is_first_parameter(const char argument[])
 {
-    if(strlen(argument) < FIRST_PARAMETER_LENGTH)
+    if(strlen(argument) < ((size_t) FIRST_PARAMETER_LENGTH))
         return 0;
     for(int index = 0; index < FIRST_PARAMETER_LENGTH; index++)
         if(argument[index] != FIRST_PARAMETER[index])
@@ -51,7 +51,7 @@ bool is_first_parameter(const char argument[])
 
 bool is_second_parameter(const char argument[])
 {
-    if(strlen(argument) < SECOND_PARAMETER_LENGTH)
+    if(strlen(argument) < ((size_t) SECOND_PARAMETER_LENGTH))
         return 0;
     for(int index = 0; index < SECOND_PARAMETER_LENGTH; index++)
         if(argument[index] != SECOND_PARAMETER[index])
