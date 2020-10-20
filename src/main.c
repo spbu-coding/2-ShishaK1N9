@@ -2,7 +2,7 @@
  * Sort(assembler) with parameters
  *
  * Roman Shishkin
- * Last update: 16.10.2020
+ * Last update: 19.10.2020
 */
 #include <stdio.h>
 #include <string.h>
@@ -58,7 +58,7 @@ bool is_second_parameter(const char argument[])
 int calc_parameter_from(char argument[])
 {
     int parameter_from = 0;
-    for(int index = FIRST_PARAMETER_LENGTH; index < strlen(argument); index++)
+    for(size_t index = FIRST_PARAMETER_LENGTH; index < strlen(argument); index++)
     {
         if(argument[index] > '9' || argument[index] < '0')
             break;
@@ -70,7 +70,7 @@ int calc_parameter_from(char argument[])
 int calc_parameter_to(char argument[])
 {
     int parameter_to = 0;
-    for(int index = SECOND_PARAMETER_LENGTH; index < strlen(argument); index++)
+    for(size_t index = SECOND_PARAMETER_LENGTH; index < strlen(argument); index++)
     {
         if(argument[index] > '9' || argument[index] < '0')
             break;
