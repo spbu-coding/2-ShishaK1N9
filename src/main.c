@@ -11,8 +11,8 @@
 #define error_print(...) fprintf(stderr, __VA_ARGS__)
 #define std_print(...) fprintf(stdout, __VA_ARGS__)
 
-const char *FIRST_PARAMETER = "--from=", *SECOND_PARAMETER = "--to=";
-const int FIRST_PARAMETER_LENGTH = 7, SECOND_PARAMETER_LENGTH = 5, MAX_ARRAY_LENGTH = 100;
+static const char *FIRST_PARAMETER = "--from=", *SECOND_PARAMETER = "--to=";
+static const int FIRST_PARAMETER_LENGTH = 7, SECOND_PARAMETER_LENGTH = 5, MAX_ARRAY_LENGTH = 100;
 
 struct parameters
 {
@@ -163,6 +163,7 @@ void input_array(int *array, int *array_length, struct parameters parameter)
         }
     }
     *array_length = index;
+
 }
 
 int main(int argc, char *argv[])
