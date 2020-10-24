@@ -10,9 +10,16 @@
 
 #define error_print(...) fprintf(stderr, __VA_ARGS__)
 #define std_print(...) fprintf(stdout, __VA_ARGS__)
+#define FIRST_PARAMETER  "--from="
+#define SECOND_PARAMETER "--to="
+#define FIRST_PARAMETER_LENGTH 7
+#define SECOND_PARAMETER_LENGTH 5
+#define MAX_ARRAY_LENGTH 100
 
+/*
 static const char *FIRST_PARAMETER = "--from=", *SECOND_PARAMETER = "--to=";
 static const int FIRST_PARAMETER_LENGTH = 7, SECOND_PARAMETER_LENGTH = 5, MAX_ARRAY_LENGTH = 100;
+ */
 
 struct parameters
 {
