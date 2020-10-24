@@ -2,8 +2,8 @@
  * Sort(assembler) with parameters
  *
  * Roman Shishkin
- * Last update: 19.10.2020
-*/
+ * Last update: 20.10.2020
+ */
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -142,22 +142,22 @@ void input_array(int *array, int *array_length, struct parameters parameter)
     {
         if(parameter.exist_from && parameter.exist_to)
         {
-            if(input_decimal < parameter.from)
+            if(input_decimal <= parameter.from)
                 std_print("%d ", input_decimal);
-            if(input_decimal > parameter.to)
+            if(input_decimal >= parameter.to)
                 error_print("%d ", input_decimal);
-            if(input_decimal >= parameter.from && input_decimal <= parameter.to)
+            if(input_decimal > parameter.from && input_decimal < parameter.to)
                 array[index++] = input_decimal;
         }
         if(parameter.exist_from && !parameter.exist_to)
         {
-            if(input_decimal < parameter.from)
+            if(input_decimal <= parameter.from)
                 std_print("%d ", input_decimal);
             else array[index++] = input_decimal;
         }
         if(!parameter.exist_from && parameter.exist_to)
         {
-            if(input_decimal > parameter.to)
+            if(input_decimal >= parameter.to)
                 error_print("%d ", input_decimal);
             else array[index++] = input_decimal;
         }
@@ -170,7 +170,7 @@ int main(int argc, char *argv[])
     struct parameters parameter;
     int starting_array[MAX_ARRAY_LENGTH], sorted_array[MAX_ARRAY_LENGTH], array_length;
     int exit_code = check_input_arguments(argc - 1, argv);
-    if(exit_code < 0)
+    if (exit_code < 0)
         return exit_code;
     calc_parameters(argc - 1, (char **) argv, &parameter);
     input_array((int *) starting_array, &array_length, parameter);
