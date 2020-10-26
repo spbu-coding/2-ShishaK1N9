@@ -2,7 +2,7 @@
  * Sort(assembler) with parameters
  *
  * Roman Shishkin
- * Last update: 20.10.2020
+ * Last update: 24.10.2020
  */
 #include <stdio.h>
 #include <string.h>
@@ -10,16 +10,9 @@
 
 #define error_print(...) fprintf(stderr, __VA_ARGS__)
 #define std_print(...) fprintf(stdout, __VA_ARGS__)
-#define FIRST_PARAMETER  "--from="
-#define SECOND_PARAMETER "--to="
-#define FIRST_PARAMETER_LENGTH 7
-#define SECOND_PARAMETER_LENGTH 5
-#define MAX_ARRAY_LENGTH 100
 
-/*
-static const char *FIRST_PARAMETER = "--from=", *SECOND_PARAMETER = "--to=";
-static const int FIRST_PARAMETER_LENGTH = 7, SECOND_PARAMETER_LENGTH = 5, MAX_ARRAY_LENGTH = 100;
- */
+const char *FIRST_PARAMETER = "--from=", *SECOND_PARAMETER = "--to=";
+const int FIRST_PARAMETER_LENGTH = 7, SECOND_PARAMETER_LENGTH = 5, MAX_ARRAY_LENGTH = 100;
 
 struct parameters
 {
@@ -145,7 +138,7 @@ void input_array(int *array, int *array_length, struct parameters parameter)
 {
     int input_decimal;
     int index = 0;
-    while(scanf("%d", &input_decimal))
+    while(scanf("%d", &input_decimal) != EOF)
     {
         if(parameter.exist_from && parameter.exist_to)
         {
